@@ -5,11 +5,10 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Fira Code:pixelsize=20:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
+	//"SauceCodePro Nerd Font:pixelsize=20:antialias=true:autohint=true",
 };
 
 static int borderpx = 2;
@@ -127,7 +126,7 @@ static const char *colorname[] = {
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#d8dee9", /* default foreground colour */
+	"#eceff4", /* default foreground colour */
 	"#2e3440", /* default background colour */
 };
 
@@ -136,16 +135,16 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor, selection
  */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
+unsigned int defaultfg = 256;
+unsigned int defaultbg = 257;
 unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 256;
-unsigned int selectionbg = 257;
-unsigned int selectionfg = 7;
+unsigned int selectionbg = 0;
+unsigned int selectionfg = 256;
 /* If 0 use selectionfg as foreground in order to have a uniform foreground-color */
 /* Else if 1 keep original foreground-color of each cell => more colors :) */
 static int ignoreselfg = 1;
-unsigned int bg = 0, bgUnfocused = 16;
+unsigned int bg = 257, bgUnfocused = 257;
 
 /*
  * Default shape of cursor
@@ -190,8 +189,8 @@ static uint forcemousemod = ShiftMask;
 const unsigned int mousescrollincrement = 1;
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ Button4,              ShiftMask,      kscrollup,      {.i =  mousescrollincrement} },
-	{ Button5,              ShiftMask,      kscrolldown,    {.i =  mousescrollincrement} },
+	{ ShiftMask,            Button4, kscrollup,      {.i =  mousescrollincrement} },
+	{ ShiftMask,            Button5, kscrolldown,    {.i =  mousescrollincrement} },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
